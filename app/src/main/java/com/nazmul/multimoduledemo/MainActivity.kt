@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nazmul.multimoduledemo.navigation.NavigationItem
+import com.nazmul.multimoduledemo.screen.home.HomeScreen
 import com.nazmul.multimoduledemo.ui.theme.MultiModuleDemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,14 +34,20 @@ class MainActivity : ComponentActivity() {
                             navController = navController,
                             startDestination = NavigationItem.Home.route
                         )
+                        {
+
+                            composable(NavigationItem.Home.route) {
+                                HomeScreen(navController = navController)
+                            }
+                        }
                     }
                 }
             }
         }
     }
-}
 
     @Composable
     fun MyApp(content: @Composable () -> Unit) {
         content()
     }
+}
